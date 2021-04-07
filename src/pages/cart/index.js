@@ -1,9 +1,16 @@
 import React from "react";
+import "./styles/cart.css";
+
+import CartColumn from "./cartColumn";
+import CartItem from "./cartItem";
+import CartTotals from "./cartTotals";
 
 export default function Cart() {
   return (
-    <div>
-      <h2>CART</h2>
-    </div>
+    <>
+      <CartColumn />
+      <CartItem />
+      <CartTotals />
+    </>
   );
 }

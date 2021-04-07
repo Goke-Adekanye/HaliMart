@@ -1,0 +1,40 @@
+.modal {
+    justify-content: center;
+    background: #fafafa;
+    padding: 5px;
+}
+
+.modal .modal_title {
+    text-align: center;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.modal .modal_image {
+    max-height: 300px;
+    width: 100%;
+    object-position: center center;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.modal .modal_image > img {
+    
+    object-fit: cover;
+    overflow: hidden;
+    max-height: 300px;
+    width: 100%;
+    
+}
+
+.modal .modal_text {
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    
+}
+
+.modal .modal_text > span {
+    font-weight: bolder;
+    
+}
+
+
+

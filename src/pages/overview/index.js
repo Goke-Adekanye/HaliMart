@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import productList from "../../utils/productList";
-import { CustomButton } from "../../components";
+import { CustomButton, Modal } from "../../components";
 import * as ROUTES from "../../routes/routes";
 import "./styles/overview.css";
 import { Grid, Paper, Typography } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 
+//createContext, useCoontext: Context provides a way to pass data{props} through the component tree
+// without having to pass props down manually at every level.
+
 export default function Overview() {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <>
       {productList.products
@@ -60,7 +64,7 @@ export default function Overview() {
 
                     <Grid item xs={12} className="overview_buttons">
                       <Grid container spacing={2}>
-                        <Grid item>
+                        <Grid item onClick={() => setOpenModal(true)}>
                           <CustomButton
                             icon={<AddShoppingCart />}
                             text={"ADD TO CART"}
@@ -81,6 +85,8 @@ export default function Overview() {
                 </Grid>
               </Grid>
             </Paper>
+
+            {openModal && <Modal id={item.id} setOpenModal={setOpenModal} />}
           </Grid>
         ))}
     </>

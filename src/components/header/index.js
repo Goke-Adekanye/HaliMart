@@ -1,6 +1,5 @@
 import React from "react";
-import { NavLink, withRouter } from "react-router-dom";
-import { Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./styles/header.css";
 import HeaderOption from "./headerOption";
 
@@ -22,9 +21,9 @@ function Header() {
         </div>
 
         <div className="header_right">
-          <Nav.Link as={NavLink} to="/cart">
+          <Link to="/cart">
             <HeaderOption Icon={AddShoppingCart} />
-          </Nav.Link>
+          </Link>
           <HeaderOption avatar={true} />
         </div>
       </div>
@@ -32,4 +31,4 @@ function Header() {
   );
 }
 
-export default withRouter(Header);
+export default Header;
