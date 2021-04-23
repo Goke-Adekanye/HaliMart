@@ -1,35 +1,35 @@
 /* eslint-disable eqeqeq */
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import productList from "../../utils/productList";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+// import { useHistory } from "react-router-dom";
 import "./styles/home.css";
-import * as ROUTES from "../../routes/routes";
+// import * as ROUTES from "../../routes/routes";
 
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Grid,
-  Grow,
-  Tab,
-  Tabs,
-  Typography,
-} from "@material-ui/core";
+import { Grid, Tab, Tabs } from "@material-ui/core";
+import { getProducts } from "../../redux/actions/dataActions";
+import { Product } from "../../components";
 
 export default function Home() {
-  const history = useHistory();
-  const [tabValue, setTabValue] = useState("All");
+  const { products, loading } = useSelector((state) => state.data);
+  const dispatch = useDispatch();
 
-  const handleOverview = () => {
-    history.push(ROUTES.OVERVIEW);
-  };
+  const [tabValue, setTabValue] = useState("All");
+  // const history = useHistory();
+
+  useEffect(() => {
+    dispatch(getProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // const handleOverview = () => {
+  //   history.push(ROUTES.OVERVIEW);
+  // };
   return (
-    <Grid container className="">
-      <Grid item xs="12">
+    <Grid container>
+      <Grid item xs={12} lg={12}>
         <Tabs
           value={tabValue}
-          indicatorColor="white"
+          indicatorColor="black"
           className="customTabs"
           onChange={(event, newValue) => setTabValue(newValue)}
         >
@@ -42,13 +42,15 @@ export default function Home() {
           />
 
           {/* [...new Set: MAP THRU PROJECTS AND CREATE NON REPETITIVE TAG-ITEM]. THEN MAP EACH TAG TO TAB */}
-          {[...new Set(productList.products.map((item) => item.tag))].map(
-            (tag) => (
+          {[...new Set(products.map((item) => item.category))].map(
+            (category) => (
               <Tab
-                label={tag}
-                value={tag}
+                label={category}
+                value={category}
                 className={
-                  tabValue == tag ? "customTabs_item active" : "customTabs_item"
+                  tabValue == category
+                    ? "customTabs_item active"
+                    : "customTabs_item"
                 }
               />
             )
@@ -58,40 +60,20 @@ export default function Home() {
 
       {/* PROJECTS */}
       <Grid item xs={12}>
-        <Grid container spacing={3}>
-          {productList.products.map((product) => (
-            <>
-              {tabValue == product.tag || tabValue == "All" ? (
-                <Grid item xs={12} sm={6} md={4}>
-                  <Grow in timeout={1000}>
-                    <Card className="customCard" onClick={handleOverview}>
-                      <CardActionArea>
-                        <CardMedia
-                          className="customCard_image"
-                          image={product.image}
-                          title={product.title}
-                        />
-                        <CardContent className="customCard_footer">
-                          <Typography
-                            variant="body2"
-                            className="customCard_title"
-                          >
-                            {product.title}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            className="customCard_caption"
-                          >
-                            {product.caption}
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                    </Card>
-                  </Grow>
-                </Grid>
-              ) : null}
-            </>
-          ))}
+        <Grid container spacing={2}>
+          {!loading ? (
+            products.map((product) => (
+              <>
+                {tabValue == product.category || tabValue == "All" ? (
+                  <Grid item xs={6} sm={6} md={4} lg={3}>
+                    <Product key={product.productId} product={product} />
+                  </Grid>
+                ) : null}
+              </>
+            ))
+          ) : (
+            <p>Loading</p>
+          )}
         </Grid>
       </Grid>
     </Grid>
