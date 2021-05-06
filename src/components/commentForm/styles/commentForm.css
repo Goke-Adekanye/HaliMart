@@ -1,0 +1,25 @@
+.comment_input {
+    display: flex;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 10px 10px 20px 10px;
+    color: gray;;
+  }
+
+  .comment_input > form {
+    display: flex;
+    width: 100%;
+  }
+  
+  .comment_input > form > input {
+    border: none;
+    flex: 1;
+    margin-left: 10px;
+    outline-width: 0;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .comment_input > form > button {
+    display: none;
+  }

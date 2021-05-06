@@ -1,52 +1,84 @@
-.overview_title {
-    padding: 15px;
-    font-family: Oswald,sans-serif;
-    font-weight: 800;
-    letter-spacing: 0.2rem;
-    text-transform: uppercase;
-    text-align: center !important;
-    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
-    justify-content: center;
+/* OVERVIEW CATEGORY */
+.overview_category {
+    background: white;
+    padding: 10px 20px;
+
+}
+
+.overview_category .overview_categoryText {
+    font-size: 2rem;
+    line-height: 1.875rem;
+  
+}
+
+@media (max-width: 700px) {
+
+    .overview_category {
+        display: none;
+      } 
   }
+/* END OF OVERVIEW CATEGORY */
 
-  .overview_details {
-    padding: 70px;
-    margin-top: 30px;
-  }
-
-
-  .overview_details .overview_detailsImage > img {
-    object-fit: cover;
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
-    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
-    
-  }
-
-  .overview_detailsDescription {
-    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
-  }
-
-  .overview_details .overview_detailsDescriptionText {
-    font-weight: bold;
-    padding-bottom: 2px;
-    
-  }
-
-  .overview_details .border_line {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  }
-
-  .overview_details .overview_detailsDescriptionText > span {
-    font-weight: 400;
-    font-size: 15px;
-    color: gray;
-    overflow-wrap: anywhere;
-    
-  }
-
-  .overview_details .overview_buttons {
+/* OVERVIEW DETAILS */
+.overview_details {
+    padding: 24px 24px 30px;
     margin-top: 10px;
+}
 
+.overview_details .overview_image > img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.overview_name {
+    color: #000;
+    font-weight: 500;
+    margin: 0 0 12.5px;
+}
+
+.overview_text {
+    color: #9B9B9B;
+    font-size: 15px;
+    margin-bottom: .5rem;
+}
+
+.overview_text .brand {
+    color: #644ba0;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.overview_text > span {
+    color: gray;
+    font-size: 15px;
+    line-height: 1.5625rem;
+    overflow-wrap: anywhere;
+}
+
+.MuiGrid-root.overview_buttons.MuiGrid-container.MuiGrid-spacing-xs-2 {
+    margin-top: 10px;
+}
+/* END OF OVERVIEW DETAILS */
+
+/* COMMENT SECTION */
+
+.comment_paper {
+    padding: 24px 24px 30px;
+    margin-top: 10px;
+}
+.comment_section {
+    display: flex;
+    justify-content: space-between;
+   
+}
+.comment_inputContainer {
+    background-color: white;
+    padding: 10px 10px 20px 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
   }
+
+
+/*END OF COMMENT SECTION */

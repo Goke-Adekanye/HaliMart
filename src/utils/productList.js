@@ -2,22 +2,6 @@
 export default {
   products: [
     {
-      tag: "Vegetables",
-      id: 1,
-      price: "$5",
-      image: "images/Broccoli1.jpg",
-      images: [
-        "images/netflix1.png",
-        "images/netflix2.png",
-        "images/netflix3.png",
-      ],
-      title: "Broccoli",
-      caption: "Front-End Netflix-Clone",
-      description:
-        "parts of plants that are consumed by humans or other animals as food.",
-    },
-
-    {
       tag: "Fruits",
       id: 2,
       brand: "HaliMart",

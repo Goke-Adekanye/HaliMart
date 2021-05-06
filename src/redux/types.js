@@ -1,2 +1,16 @@
 export const SET_PRODUCTS = "SET_PRODUCTS";
+export const SET_PRODUCT = "SET_PRODUCT";
 export const LOADING_DATA = "LOADING_DATA";
+export const LOADING_UI = "LOADING_UI";
+export const STOP_LOADING_UI = "STOP_LOADING_UI";
+export const SUBMIT_COMMENT = "SUBMIT_COMMENT";
+export const SET_ERRORS = "SET_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const LOADING_USER = "LOADING_USER";
+export const SET_USER = "SET_USER";
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
+export const INCREASE_COUNT = "INCREASE_COUNT";
+export const DECREASE_COUNT = "DECREASE_COUNT";
+export const SET_AUTHENTICATED = "SET_AUTHENTICATED";
+export const SET_UNAUTHENTICATED = "SET_UNAUTHENTICATED";

@@ -1,10 +1,8 @@
 /* eslint-disable eqeqeq */
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { useHistory } from "react-router-dom";
 import "./styles/home.css";
-// import * as ROUTES from "../../routes/routes";
-
+//MUI
 import { Grid, Tab, Tabs } from "@material-ui/core";
 import { getProducts } from "../../redux/actions/dataActions";
 import { Product } from "../../components";
@@ -12,18 +10,13 @@ import { Product } from "../../components";
 export default function Home() {
   const { products, loading } = useSelector((state) => state.data);
   const dispatch = useDispatch();
-
   const [tabValue, setTabValue] = useState("All");
-  // const history = useHistory();
 
   useEffect(() => {
     dispatch(getProducts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // const handleOverview = () => {
-  //   history.push(ROUTES.OVERVIEW);
-  // };
   return (
     <Grid container>
       <Grid item xs={12} lg={12}>

@@ -1,4 +1,11 @@
-import { LOADING_DATA, SET_PRODUCTS } from "../types";
+import {
+  LOADING_DATA,
+  SET_PRODUCTS,
+  SET_PRODUCT,
+  SUBMIT_COMMENT,
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+} from "../types";
 
 const initialState = {
   products: [],
@@ -21,6 +28,31 @@ export default function dataReducer(state = initialState, action) {
         ...state,
         products: action.payload,
         loading: false,
+      };
+
+    case SET_PRODUCT:
+      return {
+        ...state,
+        product: action.payload,
+      };
+
+    case SUBMIT_COMMENT:
+      return {
+        ...state,
+        product: {
+          ...state.product,
+          comments: [action.payload, ...state.product.comments],
+        },
+      };
+
+    case ADD_PRODUCT:
+    case REMOVE_PRODUCT:
+      let index = state.products.findIndex(
+        (product) => product.productId === action.payload.productId
+      );
+      state.products[index] = action.payload;
+      return {
+        ...state,
       };
 
     default:

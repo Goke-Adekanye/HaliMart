@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import productList from "../../utils/productList";
+import { useSelector } from "react-redux";
 import { CustomButton, Modal } from "../../components";
 import * as ROUTES from "../../routes/routes";
 import "./styles/overview.css";
@@ -11,84 +11,83 @@ import { AddShoppingCart } from "@material-ui/icons";
 // without having to pass props down manually at every level.
 
 export default function Overview() {
+  const {
+    product: { name, description, imageUrl, price, userHandle },
+  } = useSelector((state) => state.data);
+  const { loading } = useSelector((state) => state.ui);
   const [openModal, setOpenModal] = useState(false);
   return (
     <>
-      {productList.products
-        .filter((product) => product.id === 2)
-        .map((item) => (
-          <Grid container className="">
-            <Grid item xs={12} className="overview_title">
-              <h1>{item.title}</h1>
-            </Grid>
+      {!loading ? (
+        <Grid container>
+          <Grid item xs={12} className="overview_title">
+            <h1>{name}</h1>
+          </Grid>
 
-            <Paper className="overview_details">
-              <Grid container spacing={6}>
-                <Grid item xs={12} lg={5} className="overview_detailsImage">
-                  <img src={item.image} alt="product" />
-                </Grid>
+          <Paper className="overview_details">
+            <Grid container spacing={6}>
+              <Grid item xs={12} lg={5} className="overview_detailsImage">
+                <img src={imageUrl} alt="product" />
+              </Grid>
 
-                <Grid
-                  item
-                  xs={12}
-                  lg={7}
-                  className="overview_detailsDescription"
-                >
-                  <Grid container>
-                    <Grid item xs={12}>
-                      <Typography
-                        variant="h6"
-                        className="overview_detailsDescriptionText border_line"
-                      >
-                        Brand: <span>{item.brand}</span>
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        className="overview_detailsDescriptionText border_line"
-                      >
-                        Price: <span>{item.price}</span>
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        className="overview_detailsDescriptionText border_line"
-                      >
-                        Product details: <span>{item.description}</span>
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        className="overview_detailsDescriptionText border_line"
-                      >
-                        Health benefits: <span>{item.caption}</span>
-                      </Typography>
-                    </Grid>
+              <Grid item xs={12} lg={7} className="overview_detailsDescription">
+                <Grid container>
+                  <Grid item xs={12}>
+                    <Typography
+                      variant="h6"
+                      className="overview_detailsDescriptionText border_line"
+                    >
+                      Brand: <span>{userHandle}</span>
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      className="overview_detailsDescriptionText border_line"
+                    >
+                      Price: <span>{price}</span>
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      className="overview_detailsDescriptionText border_line"
+                    >
+                      Product details: <span>{description}</span>
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      className="overview_detailsDescriptionText border_line"
+                    >
+                      Health benefits: <span>Hiiiiiiii</span>
+                    </Typography>
+                  </Grid>
 
-                    <Grid item xs={12} className="overview_buttons">
-                      <Grid container spacing={2}>
-                        <Grid item onClick={() => setOpenModal(true)}>
-                          <CustomButton
-                            icon={<AddShoppingCart />}
-                            text={"ADD TO CART"}
-                          />
-                        </Grid>
+                  <Grid item xs={12} className="overview_buttons">
+                    <Grid container spacing={2}>
+                      <Grid item onClick={() => setOpenModal(true)}>
+                        <CustomButton
+                          icon={<AddShoppingCart />}
+                          text={"Buy Now"}
+                        />
+                      </Grid>
 
-                        <Grid item>
-                          <Link
-                            to={ROUTES.HOME}
-                            style={{ textDecoration: "none" }}
-                          >
-                            <CustomButton text={"Continue Shopping"} />
-                          </Link>
-                        </Grid>
+                      <Grid item>
+                        <Link
+                          to={ROUTES.HOME}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <CustomButton text={"Continue Shopping"} />
+                        </Link>
                       </Grid>
                     </Grid>
                   </Grid>
                 </Grid>
               </Grid>
-            </Paper>
+            </Grid>
+          </Paper>
 
-            {openModal && <Modal id={item.id} setOpenModal={setOpenModal} />}
-          </Grid>
-        ))}
+          {openModal && <Modal setOpenModal={setOpenModal} />}
+        </Grid>
+      ) : (
+        <p>Loading</p>
+      )}
     </>
   );
 }

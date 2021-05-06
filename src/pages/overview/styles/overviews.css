@@ -1,0 +1,52 @@
+.overview_title {
+    padding: 15px;
+    font-family: Oswald,sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    text-align: center !important;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+  }
+
+  .overview_details {
+    padding: 70px;
+    margin-top: 30px;
+  }
+
+
+  .overview_details .overview_detailsImage > img {
+    object-fit: cover;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+    
+  }
+
+  .overview_detailsDescription {
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .overview_details .overview_detailsDescriptionText {
+    font-weight: bold;
+    padding-bottom: 2px;
+    
+  }
+
+  .overview_details .border_line {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .overview_details .overview_detailsDescriptionText > span {
+    font-weight: 400;
+    font-size: 15px;
+    color: gray;
+    overflow-wrap: anywhere;
+    
+  }
+
+  .overview_details .overview_buttons {
+    margin-top: 10px;
+
+  }

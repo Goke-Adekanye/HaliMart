@@ -1,0 +1,16 @@
+
+
+.description {
+    margin-top: -7px;
+    margin-bottom: 15px;
+}
+
+.description .comment_time {
+    color: gray !important;
+    margin-top: -5px;
+   
+}
+
+p {
+    overflow-wrap: anywhere;
+}
