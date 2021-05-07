@@ -63,7 +63,7 @@ export default function userReducer(state = initialState, action) {
 
     case REMOVE_PRODUCT:
       let indexx = state.cart.findIndex(
-        (item) => item.productId === action.payload.productId
+        (item) => item.productId === action.payload
       );
       state.cart.splice(indexx, 1);
       return {
@@ -77,7 +77,8 @@ export default function userReducer(state = initialState, action) {
       );
 
       selectedProduct.count = selectedProduct.count + 1;
-      // selectedProduct.total = selectedProduct.count * selectedProduct.price;
+      selectedProduct.total =
+        selectedProduct.count * selectedProduct.productPrice;
       return {
         ...state,
         cart: [...tempCart],
@@ -90,7 +91,8 @@ export default function userReducer(state = initialState, action) {
       );
 
       selecteddProduct.count = selecteddProduct.count - 1;
-      // selectedProduct.total = selectedProduct.count * selectedProduct.price;
+      selecteddProduct.total =
+        selecteddProduct.count * selecteddProduct.productPrice;
       return {
         ...state,
         cart: [...temppCart],

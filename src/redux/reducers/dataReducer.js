@@ -3,8 +3,6 @@ import {
   SET_PRODUCTS,
   SET_PRODUCT,
   SUBMIT_COMMENT,
-  ADD_PRODUCT,
-  REMOVE_PRODUCT,
 } from "../types";
 
 const initialState = {
@@ -45,15 +43,15 @@ export default function dataReducer(state = initialState, action) {
         },
       };
 
-    case ADD_PRODUCT:
-    case REMOVE_PRODUCT:
-      let index = state.products.findIndex(
-        (product) => product.productId === action.payload.productId
-      );
-      state.products[index] = action.payload;
-      return {
-        ...state,
-      };
+    // case ADD_PRODUCT:
+    // case REMOVE_PRODUCT:
+    //   let index = state.products.findIndex(
+    //     (product) => product.productId === action.payload.productId
+    //   );
+    //   state.products[index] = action.payload;
+    //   return {
+    //     ...state,
+    //   };
 
     default:
       return state;

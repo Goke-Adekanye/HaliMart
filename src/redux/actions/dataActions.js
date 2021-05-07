@@ -87,7 +87,7 @@ export const removeProduct = (productId) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: REMOVE_PRODUCT,
-        payload: res.data,
+        payload: productId,
       });
     })
     .catch((err) => console.log(err));
