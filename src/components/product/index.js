@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import * as ROUTES from "../../routes/routes";
+
 import {
   Card,
   CardActionArea,
@@ -24,7 +24,7 @@ export default function Product({
         onClick={() => dispatch(getProduct(productId))}
       >
         <CardActionArea>
-          <Link to={ROUTES.OVERVIEW}>
+          <Link to={`/overview/${productId}`}>
             <CardMedia
               className="customCard_image"
               title={name}

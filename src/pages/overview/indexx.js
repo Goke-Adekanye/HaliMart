@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Comment,
   CustomButton,
@@ -11,8 +11,9 @@ import * as ROUTES from "../../routes/routes";
 import "./styles/overview.css";
 
 import { Grid, Paper, Typography } from "@material-ui/core";
+import { getProduct } from "../../redux/actions/dataActions";
 
-export default function Overview() {
+export default function Overview(props) {
   const {
     product: {
       name,
@@ -25,7 +26,14 @@ export default function Overview() {
       comments,
     },
   } = useSelector((state) => state.data);
+  const productid = props.match.params.productId;
   const { loading } = useSelector((state) => state.ui);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProduct(productid));
+  }, [dispatch, productid]);
+
   return (
     <>
       {!loading ? (

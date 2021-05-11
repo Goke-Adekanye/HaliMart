@@ -37,7 +37,7 @@ export default function App() {
             <div className="main_content container_shadow">
               <Switch>
                 <Route exact path={ROUTES.HOME} component={Home} />
-                <Route exact path={ROUTES.OVERVIEW} component={Overview} />
+                <Route path="/overview/:productId" component={Overview} />
                 <Route exact path={ROUTES.CART} component={Cart} />
                 <Route exact path={ROUTES.SIGN_UP} component={Signup} />
                 <Route exact path={ROUTES.SIGN_IN} component={Signin} />
